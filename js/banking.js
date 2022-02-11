@@ -1,5 +1,6 @@
 // handel deposit button event
 function getInputMethod(inputId) {
+    debugger;
     let inputAmount = document.getElementById(inputId)
     let inputAmountValue = inputAmount.value;
     let inputAmountValueInt = parseInt(inputAmountValue)
@@ -12,17 +13,24 @@ function updateTotalAmount(value, amountCurrent) {
     amountCurrentValue.innerText = parseInt(amountCurrentValue.innerText) + amountCurrent
 
 }
+function getCurrentBalance() {
+    let currentBalance = document.getElementById('balance-value')
+    let currentBalanceNext = currentBalance.innerText;
+    let currentBalanceNextInt = parseInt(currentBalanceNext)
+    return currentBalanceNextInt;
+
+}
 
 function updateBalance(amountCurrent, isAdd) {
     let currentBalance = document.getElementById('balance-value')
-    let currentBalanceNext = currentBalance.innerText;
+    let currentBalanceNextInt = getCurrentBalance();
     if (isAdd == true) {
-        let newBalanceTotal = parseInt(currentBalanceNext) + amountCurrent
+        let newBalanceTotal = currentBalanceNextInt + amountCurrent
         currentBalance.innerText = newBalanceTotal;
     }
 
     else {
-        let newBalanceTotal = parseInt(currentBalanceNext) - amountCurrent
+        let newBalanceTotal = currentBalanceNextInt - amountCurrent
         currentBalance.innerText = newBalanceTotal;
     }
 }
@@ -64,9 +72,10 @@ document.getElementById('withdraw-button').addEventListener('click', function ()
     // let withdrawCurrentValue = document.getElementById('withdraw-value')
     // withdrawCurrentValue.innerText = parseInt(withdrawCurrentValue.innerText) + parseInt(withdrawAmountValue)
     const withdrawCurrent = getInputMethod('withdraw-amount')
+    let balanceAmount = getCurrentBalance()
     // let withdrawCurrentValue = document.getElementById('withdraw-value')
     // withdrawCurrentValue.innerText = parseInt(withdrawCurrentValue.innerText) + withdrawCurrent
-    if (withdrawCurrent > 0) {
+    if (withdrawCurrent > 0 && withdrawCurrent < balanceAmount) {
         updateTotalAmount('withdraw-value', withdrawCurrent)
         //  updated balance
         /* let currentBalance = document.getElementById('balance-value')
