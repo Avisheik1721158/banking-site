@@ -41,15 +41,17 @@ document.getElementById('deposit-button').addEventListener('click', function () 
     const depositCurrent = getInputMethod('deposit-amount')
     // let depositCurrentValue = document.getElementById('deposit-value')
     // depositCurrentValue.innerText = parseInt(depositCurrentValue.innerText) + depositCurrent
-    updateTotalAmount('deposit-value', depositCurrent)
+    if (depositCurrent > 0) {
+        updateTotalAmount('deposit-value', depositCurrent)
 
 
-    //  updated balance
-    /* let currentBalance = document.getElementById('balance-value')
-    let currentBalanceNext = currentBalance.innerText;
-    let newBalanceTotal = parseInt(currentBalanceNext) + depositCurrent
-    currentBalance.innerText = newBalanceTotal; */
-    updateBalance(depositCurrent, true)
+        //  updated balance
+        /* let currentBalance = document.getElementById('balance-value')
+        let currentBalanceNext = currentBalance.innerText;
+        let newBalanceTotal = parseInt(currentBalanceNext) + depositCurrent
+        currentBalance.innerText = newBalanceTotal; */
+        updateBalance(depositCurrent, true)
+    }
 })
 
 
@@ -64,11 +66,13 @@ document.getElementById('withdraw-button').addEventListener('click', function ()
     const withdrawCurrent = getInputMethod('withdraw-amount')
     // let withdrawCurrentValue = document.getElementById('withdraw-value')
     // withdrawCurrentValue.innerText = parseInt(withdrawCurrentValue.innerText) + withdrawCurrent
-    updateTotalAmount('withdraw-value', withdrawCurrent)
-    //  updated balance
-    /* let currentBalance = document.getElementById('balance-value')
-    currentBalance.innerText = currentBalance.innerText - withdrawCurrent */
-    updateBalance(withdrawCurrent, false)
+    if (withdrawCurrent > 0) {
+        updateTotalAmount('withdraw-value', withdrawCurrent)
+        //  updated balance
+        /* let currentBalance = document.getElementById('balance-value')
+        currentBalance.innerText = currentBalance.innerText - withdrawCurrent */
+        updateBalance(withdrawCurrent, false)
+    }
 
 
 })
