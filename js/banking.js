@@ -5,9 +5,26 @@ function getInputMethod(inputId) {
     let inputAmountValueInt = parseInt(inputAmountValue)
     inputAmount.value = '';
     return inputAmountValueInt;
+}
+function updateTotalAmount(value, amountCurrent) {
+    debugger;
+    let amountCurrentValue = document.getElementById(value)
+    amountCurrentValue.innerText = parseInt(amountCurrentValue.innerText) + amountCurrent
 
+}
 
+function updateBalance(amountCurrent, isAdd) {
+    let currentBalance = document.getElementById('balance-value')
+    let currentBalanceNext = currentBalance.innerText;
+    if (isAdd == true) {
+        let newBalanceTotal = parseInt(currentBalanceNext) + amountCurrent
+        currentBalance.innerText = newBalanceTotal;
+    }
 
+    else {
+        let newBalanceTotal = parseInt(currentBalanceNext) - amountCurrent
+        currentBalance.innerText = newBalanceTotal;
+    }
 }
 
 document.getElementById('deposit-button').addEventListener('click', function () {
@@ -22,15 +39,17 @@ document.getElementById('deposit-button').addEventListener('click', function () 
     // depositAmount.value = '';
 
     const depositCurrent = getInputMethod('deposit-amount')
-    let depositCurrentValue = document.getElementById('deposit-value')
-    depositCurrentValue.innerText = parseInt(depositCurrentValue.innerText) + depositCurrent
+    // let depositCurrentValue = document.getElementById('deposit-value')
+    // depositCurrentValue.innerText = parseInt(depositCurrentValue.innerText) + depositCurrent
+    updateTotalAmount('deposit-value', depositCurrent)
 
 
     //  updated balance
-    let currentBalance = document.getElementById('balance-value')
+    /* let currentBalance = document.getElementById('balance-value')
     let currentBalanceNext = currentBalance.innerText;
     let newBalanceTotal = parseInt(currentBalanceNext) + depositCurrent
-    currentBalance.innerText = newBalanceTotal;
+    currentBalance.innerText = newBalanceTotal; */
+    updateBalance(depositCurrent, true)
 })
 
 
@@ -43,11 +62,13 @@ document.getElementById('withdraw-button').addEventListener('click', function ()
     // let withdrawCurrentValue = document.getElementById('withdraw-value')
     // withdrawCurrentValue.innerText = parseInt(withdrawCurrentValue.innerText) + parseInt(withdrawAmountValue)
     const withdrawCurrent = getInputMethod('withdraw-amount')
-    let withdrawCurrentValue = document.getElementById('withdraw-value')
-    withdrawCurrentValue.innerText = parseInt(withdrawCurrentValue.innerText) + withdrawCurrent
+    // let withdrawCurrentValue = document.getElementById('withdraw-value')
+    // withdrawCurrentValue.innerText = parseInt(withdrawCurrentValue.innerText) + withdrawCurrent
+    updateTotalAmount('withdraw-value', withdrawCurrent)
     //  updated balance
-    let currentBalance = document.getElementById('balance-value')
-    currentBalance.innerText = currentBalance.innerText - withdrawCurrent
+    /* let currentBalance = document.getElementById('balance-value')
+    currentBalance.innerText = currentBalance.innerText - withdrawCurrent */
+    updateBalance(withdrawCurrent, false)
 
 
 })
