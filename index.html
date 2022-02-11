@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking site</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <header>
+        <h1 class="text-5xl text-center mt-16 "> Welcome to <span class="font-semibold text-sky-400">my bank</span></h1>
+    </header>
+    <main>
+        <section class="text-center p-6  mt-16 bg-color bg-cyan-300 w-3/4 mx-auto rounded ">
+            <h2 class="font-bold  text-2xl"> Please login</h2>
+            <div>
+
+                <input id="user-email" class="block ml-8 w-3/4 mb-4 mt-4 border rounded px-5 pb-2 pt-2" type="text"
+                    placeholder="Your email">
+                <input id="user-password" class="block ml-8 w-3/4 mb-4 mt-4 border rounded px-5 pb-2 pt-2 mb-2"
+                    type="password" name="" id="" placeholder="Type your password">
+                <button id="login-submit"
+                    class="bg-green-500 text-white px-4 pb-2 pt-2 font-medium  block mt-6 ml-8 rounded my-4   ">Submit</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/login.js"></script>
+    <!-- <script>
+        document.getElementById('login-submit').addEventListener('click', function () {
+            console.log('button clicked')
+        })
+    </script> -->
+</body>
+
+</html>
